@@ -1,8 +1,8 @@
 package HTTP::ProxyTest;
 
 use 5.006;
-our $VERSION = '0.10';
-# $Id: ProxyTest.pm,v 1.1.1.1 2010/07/14 02:57:49 gunnarh Exp $
+our $VERSION = '0.11';
+# $Id: ProxyTest.pm,v 1.3 2011/08/01 21:03:09 gunnarh Exp $
 
 =head1 NAME
 
@@ -80,14 +80,17 @@ the -primary ports, to carry an open proxy. Default value:
 =item B<-test_url>
 
 Web address used for proxy testing; defaults to
-C<'http://example.net'>. If you pass the -test_url argument to change
-this value, you'd better choose a URL to a tiny page on a reliable
-server which includes the status line C<200 OK> in the responses.
+C<'http://gunnar.cc/proxy_test.txt'>, which is the address to a tiny
+text file on my own server. Even if that address works fine when I'm
+writing this, there is no guarantee that it will keep working for all
+time, so you are recommended to set -test_url to a resource that you
+control. Choose a URL to a tiny page on a reliable server which
+includes the status line C<200 OK> in the responses.
 
 =item B<-content_substr>
 
 A string that shall be included in the content string of the response;
-defaults to C<'/rfc2606'>. To prevent false positives,
+defaults to C<'y4dWP:a7w'>. To prevent false positives,
 C<HTTP::ProxyTest> will not report that a host carries an open proxy,
 unless it has confirmed an occurrence of -content_substr in the
 response content string.
@@ -204,7 +207,7 @@ DBM and log files. You may want to make sure that those files are
 
 =head1 AUTHOR, COPYRIGHT AND LICENSE
 
-    Copyright (c) 2010 Gunnar Hjalmarsson
+    Copyright (c) 2010-2011 Gunnar Hjalmarsson
     http://www.gunnar.cc/cgi-bin/contact.pl
 
 This module is free software; you can redistribute it and/or modify it
@@ -265,8 +268,8 @@ sub arguments {
 	my %defaults = (
 		primary         => [ 80, 3128, 8080 ],
 		secondary       => [ 808, 6588, 8000, 8088 ],
-		test_url        => 'http://example.net',
-		content_substr  => '/rfc2606',
+		test_url        => 'http://gunnar.cc/proxy_test.txt',
+		content_substr  => 'y4dWP:a7w',
 		timeout         => 4,
 		log_maxbytes    => 1_000_000,
 	);

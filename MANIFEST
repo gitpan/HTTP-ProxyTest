@@ -2,6 +2,6 @@ Changes
 Makefile.PL
 MANIFEST
 README
+TODO
 test.pl
 ProxyTest.pm
-META.yml                                 Module meta-data (added by MakeMaker)
